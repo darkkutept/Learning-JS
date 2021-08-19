@@ -33,9 +33,9 @@
       <span>người</span>
       </div>
       <button id="btn-share" class="button-share" onclick="totalTip()">TÍNH NÀO</button>
-      <div id="show-tip-amount" class="tip-amount">
+      <div class="tip-amount" id="show-tip-amount">
         <P>TIP AMOUNT</P>
-        <h2>$</h2>
+        $<h2 id="show-tip-amount-2" ></h2>
         <p>mỗi người</p>
       </div>
     </div>
@@ -44,6 +44,7 @@
       var tongTien = document.getElementById("total");
       var tip = document.getElementById("tipID");
       var showAmount = document.getElementById('show-tip-amount')
+      var shareTotal = document.getElementById('share')
       if(isNaN(tongTien.value) || tongTien.value == ""){
         alert("Nhap vao so tien");
         return false;
@@ -51,7 +52,11 @@
         {
           tongTien = parseInt(tongTien.value);
           tip = parseInt(tip.value);
-          showAmount.style.display = "block"
+          shareTotal = parseInt(shareTotal.value)
+          var tipAmount = tongTien*tip/100/shareTotal;
+          document.getElementById("show-tip-amount-2").innerHTML=tipAmount;
+          console.log(tipAmount);
+          showAmount.style.display = "block";
           
           return true;
         }

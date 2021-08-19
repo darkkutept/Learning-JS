@@ -13,21 +13,50 @@
       <h2> TÍNH TIỀN TIP</h1>
     </div>
 
-    <div class="total">
+    <div class="body-custom">
       <p>Tổng tiền thanh toán</p>
-      $<input id ="total" class="total" type="text" placeholder="Tổng tiền">
+      <div class="total">
+      <span>$</span>
+      <input id ="total" type="text" placeholder="Tổng tiền">
+      </div>
       <p>Bạn muốn Tip bao nhiêu?</p>
-      <select id="tip">
+      <select id="tipID">
         <option value="0">Chọn để tip</option>
         <option value="20">20%</option>
-        <option value="20">30%</option>
-        <option value="20">40%</option>
-        <option value="20">50%</option>
+        <option value="30">30%</option>
+        <option value="40">40%</option>
+        <option value="50">50%</option>
       </select>
+      <p>Muốn share bao nhiêu người?</p>
+      <div class="total">
+      <input type="text" id="share"  placeholder="Nhập số người"> 
+      <span>người</span>
+      </div>
+      <button id="btn-share" class="button-share" onclick="totalTip()">TÍNH NÀO</button>
+      <div id="show-tip-amount" class="tip-amount">
+        <P>TIP AMOUNT</P>
+        <h2>$</h2>
+        <p>mỗi người</p>
+      </div>
     </div>
-
     <script>
-
+      function totalTip(){
+      var tongTien = document.getElementById("total");
+      var tip = document.getElementById("tipID");
+      var showAmount = document.getElementById('show-tip-amount')
+      if(isNaN(tongTien.value) || tongTien.value == ""){
+        alert("Nhap vao so tien");
+        return false;
+      }else
+        {
+          tongTien = parseInt(tongTien.value);
+          tip = parseInt(tip.value);
+          showAmount.style.display = "block"
+          
+          return true;
+        }
+      
+    }
     </script>
   </body>
 
